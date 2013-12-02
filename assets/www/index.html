@@ -24,8 +24,9 @@
 
     <!-- include forcetk.mobilesdk for REST transaction support -->
     <script src="forcetk.mobilesdk.js"></script>
-    <script src="phonegap-nfc.js"></script> 
 
+ 	<script type="text/javascript" src="js/phonegap-nfc.js"></script>
+ 
     <!-- log window styling -->
     <style>
       .logWindow {display:none; width:100%;}
@@ -37,6 +38,7 @@
  	<script src="building.js"></script>
     <script src="util.js"></script>
     <script src="offlinequeue.js"></script>
+ 	<script src="NFC.js"></script>
  
     <script>
 
@@ -46,7 +48,7 @@
     var userId = "";
 
     var forcetkClient;
-    var debugMode = false;
+    var debugMode = true;
     var logToConsole = cordova.require("salesforce/util/logger").logToConsole;
 
     jQuery(document).ready(function() 
@@ -70,6 +72,8 @@
 
         //enable buttons
         regLinkClickHandlers();
+ 		
+ 		registerNFCHandlers ();
     }
         
 

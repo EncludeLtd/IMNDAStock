@@ -274,7 +274,6 @@ public class NfcPlugin extends CordovaPlugin {
                 }
             }
         });
-        Log.d(TAG, "leaving stopNfc");
     }
 
     private void startNdefPush(final CallbackContext callbackContext) {
@@ -442,14 +441,14 @@ public class NfcPlugin extends CordovaPlugin {
     public void onPause(boolean multitasking) {
         Log.d(TAG, "onPause " + getIntent());
         super.onPause(multitasking);
-        stopNfc(); 
+        stopNfc();
     }
 
     @Override
     public void onResume(boolean multitasking) {
         Log.d(TAG, "onResume " + getIntent());
         super.onResume(multitasking);
-        startNfc(); 
+        startNfc();
     }
 
     @Override
