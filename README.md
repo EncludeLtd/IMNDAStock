@@ -1,4 +1,4 @@
-DepaulNFC
+IMNDAStock
 =========
 
-Depaul Health and Safety app with NFC
+IMNDA Stock app with NFC

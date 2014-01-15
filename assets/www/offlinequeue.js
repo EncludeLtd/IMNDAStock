@@ -24,54 +24,54 @@ OfflineQueue.UploadQueue = function(whichSoup, callback,error) {
 	if(Util.checkConnection()) {
 //      	console.log("OfflineQueue.UploadQueue -- app is online");
         //DF12 DEMO 23 -- UPLOAD QUEUE TO SFDC
-      	sfSmartstore.soupExists(whichSoup,function(param){
-		if(param)
-		{
-//			console.log("OfflineQueue.UploadQueue -- " + whichSoup + " Queue exists");
-				OfflineQueue.LoadRecordsFromQueue(whichSoup, function(records) {
-					if(records.length==0){
-//                       	console.log("OfflineQueue.UploadQueue -- no records in queue");
-						if (callback) callback();
-					}
-					else {				
-//                        console.log("OfflineQueue.UploadQueue -- iterating records");
-						for(i in records){
-							var updateField;
-							var sfObject;
-							if (whichSoup == 'WellBeingUploadQueue') 
-							{
-								updateField = {"Wellbeing_Status__c":records[i].Wellbeing_Status__c};
-								sfObject = 'Wellbeing_Check__c';
-							}
-							else
-							{
-								updateField = {"Result__c":records[i].Result__c};
-								sfObject = 'Item_Check__c';
-							};
-							forcetkClient.update(sfObject, records[i].Id, updateField, function(){
-//								console.log('QUEUED SFDC Update Success!');
-                                //DF12 DEMO 24 -- ON SUCCESS, REMOVE RECORD FROM QUEUE
-								sfSmartstore.removeFromSoup(whichSoup,[records[i]._soupEntryId],function(){
-//									console.log('Removed from Soup');
-									if(i == records.length-1) {
-										if (callback) callback();
-									}
-								},error);
-							},error);				
-						}
-					}
-				},error);
-			}
-			else {
-//				console.log("Offline queue doesn't exist yet... must not be any records there...")
-				if (callback) callback();
-			}
-		},error);
-
-
+//      	sfSmartstore.soupExists(whichSoup,function(param){
+//		if(param)
+//		{
+////			console.log("OfflineQueue.UploadQueue -- " + whichSoup + " Queue exists");
+//				OfflineQueue.LoadRecordsFromQueue(whichSoup, function(records) {
+//					if(records.length==0){
+////                       	console.log("OfflineQueue.UploadQueue -- no records in queue");
+//						if (callback) callback();
+//					}
+//					else {				
+////                        console.log("OfflineQueue.UploadQueue -- iterating records");
+//						for(i in records){
+//							var updateField;
+//							var sfObject;
+//							if (whichSoup == 'WellBeingUploadQueue') 
+//							{
+//								updateField = {"Wellbeing_Status__c":records[i].Wellbeing_Status__c};
+//								sfObject = 'Wellbeing_Check__c';
+//							}
+//							else
+//							{
+//								updateField = {"Result__c":records[i].Result__c};
+//								sfObject = 'Item_Check__c';
+//							};
+//							forcetkClient.update(sfObject, records[i].Id, updateField, function(){
+////								console.log('QUEUED SFDC Update Success!');
+//                                //DF12 DEMO 24 -- ON SUCCESS, REMOVE RECORD FROM QUEUE
+//								sfSmartstore.removeFromSoup(whichSoup,[records[i]._soupEntryId],function(){
+////									console.log('Removed from Soup');
+//									if(i == records.length-1) {
+//										if (callback) callback();
+//									}
+//								},error);
+//							},error);				
+//						}
+//					}
+//				},error);
+//			}
+//			else {
+////				console.log("Offline queue doesn't exist yet... must not be any records there...")
+//				if (callback) callback();
+//			}
+//		},error);
+//
+//
 	}
 	else {
-//		console.log("We're offline, can't upload queue... how'd we even get here?")
+		console.log("We're offline, can't upload queue... how'd we even get here?")
 		if (callback) callback();
 	}
 

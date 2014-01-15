@@ -2,7 +2,7 @@
 <!-- 
 /*
 * Author: Eamon Kelly, Enclude
-* Purpose: Depaul Health and Safety App
+* Purpose: IMNDA Stock App
 * Called from: 
 */
  -->
@@ -34,8 +34,7 @@
     </style>
 
     <!-- Custom Classes -->
- 	<script src="wellbeing.js"></script>
- 	<script src="building.js"></script>
+ 	<script src="stock.js"></script>
     <script src="util.js"></script>
     <script src="offlinequeue.js"></script>
  	<script src="NFC.js"></script>
@@ -44,7 +43,7 @@
 
     
     // The version of the REST API you wish to use in your app.
-    var apiVersion = "v28.0";
+    var apiVersion = "v29.0";
     var userId = "";
 
     var forcetkClient;
@@ -115,25 +114,23 @@
   <body>
       <div data-role="page" data-theme="b" id="jqm-home"> 
           <div  data-role="header"> 
-              <h1>Health and Safety</h1> 
+              <h1>IMNDA Stock</h1> 
           </div> 
 
           <div data-role="content"> 
-			<div id="buildingname">Building is:</div> 
-              <p><a href="#" id="link_fetch_wellbeingchecks" data-role="button" data-inline="true">Wellbeing Checks</a></p>
-              <p><a href="#" id="link_fetch_buildingchecks" data-role="button" data-inline="true">Building Checks</a></p>
-              <p><a href="#" id="link_fetch_syncchecks" data-role="button" data-inline="true">Synch Checks</a></p>
+              <p><a href="#" id="link_stockcheck" data-role="button" data-inline="true">Stock Check</a></p>
+              <p><a href="#" id="link_programtag" data-role="button" data-inline="true">Program Tag</a></p>
               <p><a href="#" id="link_reset" data-role="button" data-inline="true">Reset</a></p>
               <p><a href="#" id="link_logout" data-role="button" data-inline="true">Logout</a></p>
           </div>
        </div>
-	   <div data-role="page" data-theme="b" id="wellbeingpage"> 
+	   <div data-role="page" data-theme="b" id="stockcheckpage"> 
 	      <div  data-role="header"> 
 	          <h1>Checks</h1> 
 	      </div> 
 	
 	      <div data-role="content"> 
-	          <ul data-role="listview" id="div_sfdc_wellbeing_list">No WellBeing Checks Available</ul>
+	          <ul data-role="listview" id="div_sfdc_stock_list">No Stock Checks Available</ul>
 	      </div> 
 	   </div> 
 	 		
